@@ -1,0 +1,64 @@
+1. What does RGBA stand for?
+Answer : RGBA(Red-Green-Blue-Alpha)
+
+2. From the Pillow module, how do you get the RGBA value of any images?
+Answer:  don't have to memorize RGBA values for the colors you want to use. This function takes a color name string as its first argument, and the string 'RGBA' as its second argument, and it returns an RGBA tuple.
+
+3. What is a box tuple, and how does it work?
+Answer: The box. tuple submodule provides read-only access for the tuple userdata type. It allows, for a single tuple: selective retrieval of the field contents, retrieval of information about size, iteration over all the fields, and conversion to a Lua table.
+
+4. Use your image and load in notebook then, How can you find out the width and height of an
+Image object?
+Answer: The imread(filepath) function is used to load an image from the file path specified. The .shape stores a tuple of height, width and no of channels for each pixel. The .shape[:2] will get the height and width of the image.
+
+5. What method would you call to get Image object for a 100×100 image, excluding the lower-left
+quarter of it?
+Answer : 
+
+Create a new canvas element 
+const canvas = document.createElement('canvas'); 
+canvas.width = 100; 
+canvas.height = 100; 
+ 
+// Get the canvas context and load the image 
+const ctx = canvas.getContext('2d'); 
+const img = new Image(); 
+img.src = 'path/to/image.png'; 
+ 
+// Once the image has loaded, draw it on the canvas 
+img.onload = function() { 
+  // Draw the image on the canvas 
+  ctx.drawImage(img, 0, 0, 100, 100); 
+ 
+  // Exclude the lower-left quarter of the image 
+  ctx.clearRect(0, 75, 25, 25); 
+ 
+  // Get the resulting image data 
+  const imageData = ctx.getImageData(0, 0, 100, 100); 
+ 
+  // Create a new Image object from the resulting image data 
+  const newImg = new Image(); 
+  newImg.src = URL.createObjectURL(new Blob([imageData], {type: 'image/png'})); 
+ 
+  // Append the new Image object to the document 
+  document.body.appendChild(newImg); 
+}; 
+
+
+6. After making changes to an Image object, how could you save it as an image file?
+Answer: No
+
+7. What module contains Pillow’s shape-drawing code?
+Answer: The ‘ImageDraw’ module provides simple 2D graphics support for Image Object. Generally, we use this module to create new images, annotate or retouch existing images and to generate graphics on the fly for web use.
+
+8. Image objects do not have drawing methods. What kind of object does? How do you get this kind
+of object?
+Answer: We have to use following libary imported to complet it- 
+
+import PIL
+import os.path  
+import PIL.ImageDraw            
+import PIL
+from PIL import ImageFont
+from PIL import Image
+from PIL import ImageDraw
